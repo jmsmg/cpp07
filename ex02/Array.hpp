@@ -4,12 +4,12 @@
 #include <iostream>
 #include <string>
 
-template<typename T>
+template <typename T, size_t N>
 class Array
 {
 	private:
 		T		*_ptr;
-		size_t	_len;
+		size_t	_size;
 
 	public:
 		Array();
@@ -17,7 +17,7 @@ class Array
 		Array(const Array &array)
 		Array	&operator=(const Array &array);
 		~Array();
-		size_t	getLen();
+		size_t	getSize() const;
 };
 
 #endif

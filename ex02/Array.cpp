@@ -1,42 +1,57 @@
 #include "Array.hpp"
 
-template <typename T>
-Array<T>::Array() : _ptr(NULL), _len(0)
+template <typename T, size_t N>
+Array<T, N>::Array() : _ptr(NULL), _size(0)
 {
 }
 
-template <typename T>
-Array<T>::Array(size_t len) : _ptr(NULL), _len(len)
+template <typename T, size_t N>
+Array<T, N>::Array(size_t len)
 {
-	if (this->_len != 0)
+	if (!len)
 	{
-		this->_ptr = new T[len];
+		Array();
+		return ;
 	}
+
+	this->_ptr = new T[N];
+	this->_size = len;
 }
 
-template <typename T>
-Array<T>::Array(const Array &array)
+template <typename T, size_t N>
+Array<T, N>::Array(const Array &array)
 {
-	if (this->_len != 0)
+	if (this->getSize())
 	{
 		delete this->_ptr;
 	}
 
-	this->ptr = new T[array.getLen()];
-	for (int i = 0; i < array.getLen(); i++)
+	if (this != &array)
 	{
-		this->_ptr[i] = array[i];
+		this->_size = array.getSize();
+		if (this->_size == 0)
+		{
+			this->_ptr = NULL;
+		}
+		else
+		{
+			this->_ptr = new T[N];
+		}
+		for (size_t i = 0; i < N, i++)
+		{
+			this->_ptr[i] = array._ptr[i];
+		}
 	}
 }
 
-template <typename T>
-Array	&Array<T>::operator=(const Array &array)
+template <typename T, size_t N>
+Array<T, N> &Array<T, N>::operator=(const Array &array)
 {
 
 }
 
-template <typename T>
-Array<T>::~Array()
+template <typename T, size_t N>
+size_t	Array<T, N>::getSize() const
 {
-	delete	this->_ptr;
+	return (this->_size);
 }
