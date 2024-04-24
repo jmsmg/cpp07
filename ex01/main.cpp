@@ -3,7 +3,7 @@
 int	main()
 {
 	int			array[100];
-	std::string	str[2] = {"hello"," world"};
+	const std::string	str[2] = {"hello"," world"};
 
 	for (int i = 0; i < 100; i++)
 	{
