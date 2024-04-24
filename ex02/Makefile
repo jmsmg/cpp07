@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 FLAG = -Wall -Wextra -Werror -I. -std=c++98
 NAME = a.out
 OBJS = $(SRCS:.cpp=.o)

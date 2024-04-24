@@ -18,11 +18,10 @@ class Array
 		{
 		};
 
-		Array(size_t n) : _ptr(new T), _size(n)
+		Array(size_t n) : _ptr(new T[n]), _size(n)
 		{
 			if (!n)
 				return ;
-			this->_ptr = new T[n];
 			for (size_t i = 0; i < n; i++)
 			{
 				this->_ptr[i] = 0;
