@@ -14,11 +14,11 @@ class Array
 		size_t	_size;
 
 	public:
-		Array() : _ptr(NULL), _size(0)
+		Array() : _ptr(new T), _size(0)
 		{
 		};
 
-		Array(size_t n) : _ptr(NULL), _size(n)
+		Array(size_t n) : _ptr(new T), _size(n)
 		{
 			if (!n)
 				return ;
@@ -46,10 +46,7 @@ class Array
 			{
 				return (*this);
 			}
-			if (this->_size != 0)
-			{
-				delete (this->_ptr);
-			}
+			delete[] (this->_ptr);
 			this->_ptr = new T[array.getSize()];
 
 			for (size_t i = 0; i < array.getSize(); i++)
@@ -57,7 +54,6 @@ class Array
 				this->_ptr[i] = array[i];
 			}
 			this->_size = array.getSize();
-
 			return (*this);
 		};
 
@@ -77,7 +73,7 @@ class Array
 
 		~Array()
 		{
-			delete this->_ptr;
+			delete[] this->_ptr;
 		};
 
 		size_t	getSize() const

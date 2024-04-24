@@ -1,5 +1,5 @@
 CC = g++
-FLAG = -Wall -Wextra -Werror -std=c++98
+FLAG = -Wall -Wextra -Werror -I. -std=c++98
 NAME = a.out
 OBJS = $(SRCS:.cpp=.o)
 SRCS = main.cpp

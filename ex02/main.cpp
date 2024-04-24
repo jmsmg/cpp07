@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Array.hpp"
+#include <Array.hpp>
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -49,6 +49,20 @@ int main(int, char**)
         numbers[i] = rand();
     }
 
+	Array<int> a = Array<int>();
+
+	try
+	{
+		std::cout << a[0] << std::endl;
+	}
+	catch (std::exception& e)
+	{
+        std::cerr << e.what() << '\n';
+	}
     delete [] mirror;//
+	while (1)
+	{
+
+	}
     return 0;
 }
